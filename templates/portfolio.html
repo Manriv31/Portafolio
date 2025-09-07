@@ -3,43 +3,46 @@
     <hr class="mb-5">
 
     <div class="row row-cols1 row-cols-md-3 g-4">
-        <div class="col">
-            <div class="card">
-                <img src="{{url_for('static', filename='img/todo-list.png')}}" alt="Imagen del Proyecto" class="d-block mx-lg-auto img-fluid">
-
-                <div class="card-body">
-                    <h5 class="card-title"> Lista de Tareas - Flask</h5>
-                    <p class="card-text">Este es un proyecto gestor de lista de tareas.</p>
-                    <a href="#" class="nav-link text-primary">Ver Proyecto</a>
-
+        <div class="col d-flex">
+            <div class="card h-100 shadow-sm">
+                <div class="card-img-top p-0">
+                    <img src="{{url_for('static', filename='img/todo-list.png')}}" alt="Imagen del Proyecto" class="card-img-fixed">
+                </div>
+                <div class="card-body d-flex flex-column justify-content-start">
+                    <h5 class="card-title mb-2">Lista de Tareas - Flask</h5>
+                    <p class="card-text mb-3">Este es un proyecto gestor de lista de tareas.</p>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-primary w-100">Ver Proyecto</a>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="col">
-            <div class="card">
-                <img src="{{url_for('static', filename='img/blog-post.png')}}" alt="Imagen del Proyecto" class="d-block mx-lg-auto img-fluid">
-
-                <div class="card-body">
-                    <h5 class="card-title"> BlogPosts - Flask</h5>
-                    <p class="card-text">Este es un proyecto gestor de blogs.</p>
-                    <a href="#" class="nav-link text-primary">Ver Proyecto</a>
+        <div class="col d-flex">
+            <div class="card h-100 shadow-sm">
+                <div class="card-img-top p-0">
+                    <img src="{{url_for('static', filename='img/blog-post.png')}}" alt="Imagen del Proyecto" class="card-img-fixed">
+                </div>
+                <div class="card-body d-flex flex-column justify-content-start">
+                    <h5 class="card-title mb-2">BlogPosts - Flask</h5>
+                    <p class="card-text mb-3">Este es un proyecto gestor de blogs.</p>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-primary w-100">Ver Proyecto</a>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="col">
-            <div class="card">
-                <img src="{{url_for('static', filename='img/api-contact.png')}}" alt="Imagen del Proyecto" class="d-block mx-lg-auto img-fluid">
-
-                <div class="card-body">
-                    <h5 class="card-title"> API Contactos - Flask</h5>
-                    <p class="card-text">Este es un proyecto de tipo API-REST para administrar una lista de contactos.</p>
-                    <a href="#" class="nav-link text-primary">Ver Proyecto</a>
-
+        <div class="col d-flex">
+            <div class="card h-100 shadow-sm">
+                <div class="card-img-top p-0">
+                    <img src="{{url_for('static', filename='img/api-contact.png')}}" alt="Imagen del Proyecto" class="card-img-fixed">
+                </div>
+                <div class="card-body d-flex flex-column justify-content-start">
+                    <h5 class="card-title mb-2">API Contactos - Flask</h5>
+                    <p class="card-text mb-3">Este es un proyecto de tipo API-REST para administrar una lista de contactos.</p>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-primary w-100">Ver Proyecto</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
 </section>

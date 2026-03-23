@@ -110,6 +110,26 @@ img {
     color: var(--text-primary);
 }
 
+/* Theme toggle icons: show sun in dark mode, moon in light mode */
+.icon-button svg.icon-sun {
+    display: block;
+}
+.icon-button svg.icon-moon {
+    display: none;
+}
+.light-theme .icon-button svg.icon-sun {
+    display: none;
+}
+.light-theme .icon-button svg.icon-moon {
+    display: block;
+}
+
+/* Smooth icon fade */
+.icon-button svg.icon-sun,
+.icon-button svg.icon-moon {
+    transition: opacity 160ms ease;
+}
+
 /* Light theme overrides */
 .light-theme {
     --bg-primary: #ffffff;
@@ -1172,6 +1192,12 @@ img {
         padding: 1.5rem 2rem;
         gap: 1rem;
         border-bottom: 1px solid var(--border);
+    }
+
+    /* Cuando el sitio está en tema claro, adaptar el fondo del menú móvil */
+    .light-theme .nav-links {
+        background: rgba(255, 255, 255, 0.95);
+        border-bottom-color: var(--border);
     }
 
     .nav-links.open {

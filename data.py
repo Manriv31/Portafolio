@@ -35,7 +35,9 @@ portfolio_data = {
             "name_en": "Integrated Contracts and Payments System - SICP",
             "description": "Sistema de gestión de contratos y pagos para uso interno de Banco Agricola, desarrollado con Python y Flask. Permite la administración eficiente de proveedores, contratos, seguimiento de pagos y generación de reportes.",
             "description_en": "Contract and payments management system for internal use at Banco Agrícola, built with Python and Flask. Enables efficient vendor, contract, payment tracking and reporting.",
-            "url": "https://github.com/Manriv31/SICP",
+            "image": "/static/img/projects/sicp.svg",
+            "images": ["/static/img/projects/sicp.svg", "/static/img/projects/sicp.svg"],
+            "stack": ["Python", "Flask", "SQLAlchemy"],
             "language": "Python",
         },
         {
@@ -43,7 +45,9 @@ portfolio_data = {
             "name_en": "Website - Akira",
             "description": "Catalogo de productos para una marca de velas aromaticas, este consiste en un apartado donde se muestran los productos con sus caracteristicas, carrito de compras, registro de usuarios, ordenes de productos por usuario y un panel de administrador para gestionar los productos, ordenes y usuarios, desarrollado con Python, Flask y SQLAlchemy.",
             "description_en": "Product catalog site for a scented-candles brand. Shows product pages, cart, user accounts, orders per user and an admin panel to manage products, orders and users. Built with Python, Flask and SQLAlchemy.",
-            "url": "https://github.com/Manriv31/proyecto-beta",
+            "image": "/static/img/projects/akira.svg",
+            "images": ["/static/img/projects/akira.svg", "/static/img/projects/akira.svg"],
+            "stack": ["Python", "Flask", "SQLAlchemy", "Bootstrap"],
             "language": "Python",
         },
         {
@@ -51,7 +55,9 @@ portfolio_data = {
             "name_en": "Personal Portfolio",
             "description": "Mi portafolio personal, construido con python y flask, utilizando un diseño moderno y responsivo para mostrar mis proyectos, experiencia laboral y enlaces de contacto.",
             "description_en": "My personal portfolio, built with Python and Flask, using a modern responsive design to showcase projects, work experience and contact links.",
-            "url": "https://github.com/Manriv31/portafolio-personal",
+            "image": "/static/img/projects/portafolio.svg",
+            "images": ["/static/img/projects/portafolio.svg", "/static/img/projects/portafolio.svg"],
+            "stack": ["Python", "Flask", "HTML", "CSS"],
             "language": "Python"
         },
         {
@@ -59,7 +65,9 @@ portfolio_data = {
             "name_en": "BlogPosts",
             "description": "Sitio web de blog personal, desarrollado con Python y Flask, que permite publicar artículos, categorizar contenido y gestionar comentarios. El sitio cuenta con un diseño limpio y funcional para una experiencia de lectura agradable.",
             "description_en": "Personal blog site developed with Python and Flask, enabling article publishing, content categorization and comment management. Clean, readable design.",
-            "url": "https://github.com/Manriv31/proyecto-delta",
+            "image": "/static/img/projects/blogposts.svg",
+            "images": ["/static/img/projects/blogposts.svg", "/static/img/projects/blogposts.svg"],
+            "stack": ["Python", "Flask"],
             "language": "Python",
         },
         {
@@ -67,7 +75,9 @@ portfolio_data = {
             "name_en": "SisPro",
             "description": "Aplicativo web interno para la unificacion de estadisticas de institucion gobernamental, deesarrollado con PHP y CakePHP que permite la recopilación, análisis y visualización de datos estadísticos provenientes de diversas fuentes.",
             "description_en": "Internal web application for unifying statistics at a government institution, developed with PHP and CakePHP to collect, analyze and visualize statistical data from various sources.",
-            "url": "https://github.com/Manriv31/proyecto-delta",
+            "image": "/static/img/projects/sispro.svg",
+            "images": ["/static/img/projects/sispro.svg", "/static/img/projects/sispro.svg"],
+            "stack": ["PHP", "CakePHP", "MySQL"],
             "language": "PHP",
         },
         {
@@ -75,7 +85,9 @@ portfolio_data = {
             "name_en": "BusitoSV",
             "description": "Aplicativo web como proyecto de tesis universitaria para la gestión de rutas y horarios de transporte público en El Salvador, desarrollado con PHP y Laravel. Permite a los usuarios consultar rutas por medio de un mapa interactivo, visualizar horarios posibles de llegada y salida.",
             "description_en": "Web application (thesis project) for managing public transport routes and schedules in El Salvador, developed with PHP and Laravel. Users can query routes on an interactive map and view possible arrival/departure times.",
-            "url": "https://github.com/Manriv31/proyecto-delta",
+            "image": "/static/img/projects/busitosv.svg",
+            "images": ["/static/img/projects/busitosv.svg", "/static/img/projects/busitosv.svg"],
+            "stack": ["PHP", "Laravel", "JavaScript"],
             "language": "PHP",
         },
         # {

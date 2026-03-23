@@ -59,7 +59,7 @@
         <h3 class="subsection-title fade-in" data-i18n="projects.featured">Featured projects</h3>
         <div class="proyectos-grid">
             {% for project in data.projects %}
-            <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer" class="proyecto-card fade-in">
+            <div class="proyecto-card fade-in">
                 <div class="proyecto-header">
                     <div class="proyecto-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -88,12 +88,12 @@
                         </span>
                     {% endif %}
                 </div>
-            </a>
+            </div>
             {% endfor %}
         </div>
 
         <div class="section-cta fade-in">
-            <a href="https://github.com/{{ data.github_username }}" target="_blank" rel="noopener noreferrer" class="link-arrow" data-i18n="projects.see_all">See all projects →</a>
+            <a href="{{ url_for('projects') }}" class="link-arrow" data-i18n="projects.see_all">Ver todos los proyectos →</a>
         </div>
     </div>
 </section>

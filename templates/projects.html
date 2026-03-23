@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="projects-section">
+  <div class="container">
+    <h1 data-i18n="projects.title">Proyectos</h1>
+    <p class="lead">{{ data.proyectos_intro }}</p>
+    <br>
+
+    <div class="projects-grid">
+      {% for p in data.projects %}
+      <article class="project-card">
+        <div class="project-media">
+          <div class="project-carousel" data-images-count="{{ p.images|length if p.images else 1 }}">
+            {% set imgs = p.images if p.images else [p.image|default('/static/img/Manu-pixel.png')] %}
+            {% for img in imgs %}
+            <img src="{{ img }}" alt="{{ p.name }} image {{ loop.index }}" class="carousel-item{% if loop.index0 == 0 %} active{% endif %}">
+            {% endfor %}
+            <button class="carousel-btn prev" aria-label="Previous image">‹</button>
+            <button class="carousel-btn next" aria-label="Next image">›</button>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-title-wrap">
+            <h2 class="project-title">{{ p.name }}</h2>
+          </div>
+          <p class="project-desc" data-text-es="{{ p.description }}" data-text-en="{{ p.description_en }}">{{ p.description }}</p>
+          {% if p.stack %}
+          <div class="project-stack">
+            {% for s in p.stack %}
+              <span class="chip">{{ s }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Modal (hidden by default) -->
+  <div id="project-modal" class="modal" aria-hidden="true">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">✕</button>
+      <button class="modal-prev" aria-label="Previous">‹</button>
+      <img src="" alt="" class="modal-image">
+      <button class="modal-next" aria-label="Next">›</button>
+    </div>
+  </div>
+
+</section>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+.container{max-width:1100px;margin:40px auto;padding:0 16px}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;grid-auto-rows:1fr}
+.projects-section{padding-top:calc(64px + 1rem)}
+.projects-grid > *{align-self:stretch}
+.project-card{background:var(--card-bg,#fff);border-radius:10px;box-shadow:0 6px 18px rgba(2,6,23,.06);overflow:hidden;display:flex;flex-direction:column}
+.project-media{position:relative}
+.project-carousel{position:relative;height:180px;overflow:hidden;background:#f5f5f7}
+.project-carousel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.02);transition:opacity .25s ease,transform .3s ease}
+.project-carousel img.active{opacity:1;transform:scale(1)}
+.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.35);color:#fff;border:0;padding:6px 10px;border-radius:6px;cursor:pointer}
+.carousel-btn.prev{left:8px}
+.carousel-btn.next{right:8px}
+.project-body{padding:16px;display:flex;flex-direction:column;flex:1}
+.project-title-wrap{min-height:56px; display:flex; align-items:flex-start}
+.project-title{margin:0 0 8px;font-size:1.1rem;color:var(--accent);font-weight:600}
+.project-desc{margin:0 0 12px;color:var(--text-muted,#444);font-size:0.95rem;flex:1}
+.project-stack{margin-top:8px}
+.chip{display:inline-block;background:#f1f1f1;color:#333;padding:6px 8px;border-radius:999px;font-size:0.8rem;margin-right:6px;margin-bottom:6px}
+
+/* Modal */
+.modal{display:none;position:fixed;inset:0;z-index:2000;align-items:center;justify-content:center}
+.modal.open{display:flex}
+.modal-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.6)}
+.modal-content{position:relative;max-width:90vw;max-height:90vh;display:flex;align-items:center;justify-content:center}
+.modal-image{max-width:100%;max-height:100%;border-radius:6px;box-shadow:0 12px 40px rgba(2,6,23,.5)}
+.modal-close{position:absolute;top:-42px;right:0;background:transparent;border:0;color:#fff;font-size:20px;cursor:pointer}
+.modal-prev,.modal-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);color:#fff;border:0;padding:8px 12px;border-radius:6px;cursor:pointer}
+.modal-prev{left:-60px}.modal-next{right:-60px}
+
+@media (prefers-color-scheme:dark){
+  .project-card{background:#071122;color:#e6eef8}
+  .chip{background:#10202b;color:#cfe6ff}
+}
+</style>
+
+<script src="{{ url_for('static', filename='js/projects.js') }}" defer></script>
+{% endblock %}

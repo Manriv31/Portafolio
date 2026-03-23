@@ -145,6 +145,29 @@ img {
     color: var(--text-primary);
 }
 
+/* Light theme: ensure project cards have a subtle outline and readable text */
+.light-theme .project-card,
+.light-theme .proyecto-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+}
+
+.light-theme .project-card:hover,
+.light-theme .proyecto-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(16,24,40,0.06);
+}
+
+/* Make description text darker in light mode for readability */
+.light-theme .project-desc,
+.light-theme .proyecto-descripcion,
+.light-theme .proyecto-descripcion {
+    color: var(--text-secondary);
+}
+
 /* Ensure navigation background adapts to light theme */
 .light-theme .nav {
     background: rgba(255, 255, 255, 0.9);
@@ -653,6 +676,7 @@ img {
     font-weight: 600;
     margin-bottom: 0.5rem;
     letter-spacing: -0.01em;
+    color: var(--accent);
 }
 
 .proyecto-descripcion {

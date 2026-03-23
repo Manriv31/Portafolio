@@ -51,8 +51,27 @@
                 </ul>
 
                 <div class="experience-stack">
+                    {% set logo_map = {
+                        'python': 'python', 'flask': 'flask', 'django': 'django', 'docker': 'docker', 'github': 'github',
+                        'dynatrace': 'dynatrace', 'zabbix': 'zabbix', 'grafana': 'grafana', 'postgresql': 'postgresql',
+                        'linux': 'linux', 'mysql': 'mysql', 'fastapi': 'fastapi', 'php': 'php', 'cakephp': 'cakephp',
+                        'javascript': 'javascript', 'jquery': 'jquery', 'css': 'css3', 'zingchart': 'zingchart',
+                        'selenium': 'selenium', 'sql': 'database'
+                    } %}
+
                     {% for tech in item.stack %}
-                    <span class="specialty-badge">{{ tech }}</span>
+                    {% set key = (tech|lower).replace(' ', '_').replace('+', 'plus') %}
+                    {% set logo = logo_map.get(key, key) %}
+                    {% set badge_url = 'https://img.shields.io/badge/-' ~ tech.replace(' ', '%20') ~ '-2b2b2b?style=flat-square&logo=' ~ logo ~ '&logoColor=white' %}
+                    <span class="tech-badge" title="{{ tech }}">
+                        <span class="tech-pill">
+                            <img class="tech-logo" src="{{ badge_url }}" alt="{{ tech }} logo" 
+                                 onload="this.closest('.tech-badge').classList.add('img-loaded')"
+                                 onerror="this.closest('.tech-badge').classList.add('img-missing')">
+                            <span class="tech-initials">{{ (tech.split(' ')[0][:2]).upper() }}</span>
+                        </span>
+                        <span class="tech-label">{{ tech }}</span>
+                    </span>
                     {% endfor %}
                 </div>
             </article>

@@ -113,15 +113,6 @@ portfolio_data = {
         "cv_url": "#",
     },
 
-    # --- CV (RenderCV - template Engineering Resumes) ---
-    # Nota: "es" apunta al archivo con sufijo "sp" para mantener compatibilidad
-    # con el nombre actual del archivo en static/cv.
-    "cv_files": {
-        "en": "Manuel_Rivera_CV_en.yaml",
-        "es": "Manuel_Rivera_CV_sp.yaml",
-        "sp": "Manuel_Rivera_CV_sp.yaml",
-    },
-
     # --- Experiencia detallada (página dedicada) ---
     "experience_intro": "Soy un ingeniero de software especializado en observabilidad y desarrollo back-end, centrado en crear soluciones internas que mejoren la operativa del equipo.",
     "experience_intro_en": "I'm a software engineer focused on observability and back-end development, building internal solutions that improve team operations.",

@@ -36,115 +36,23 @@ def experience():
 
 @app.route("/cv/download")
 def download_cv():
+    # Serve pre-generated PDF files from static/cv/ based on `lang`
     lang = request.args.get("lang", "es").lower()
-    cv_files = portfolio_data.get("cv_files", {})
 
-    if lang == "es":
-        # Compatibilidad con archivo nombrado como "sp" en este proyecto.
-        filename = cv_files.get("es") or cv_files.get("sp")
-    else:
-        filename = cv_files.get("en")
+    # Map languages to the PDF filenames present in static/cv/
+    pdf_map = {
+        "es": "Manuel_Rivera_CV_es.pdf",
+        "en": "Manuel_Rivera_CV_en.pdf",
+    }
 
-    if not filename:
-        abort(404)
-
+    filename = pdf_map.get(lang, pdf_map["es"])  # default to Spanish
     file_path = CV_DIR / filename
+
     if not file_path.exists():
         abort(404)
 
-    # Use rendercv to render the YAML to PDF in a temporary directory, then serve the PDF
-    temp_dir = tempfile.mkdtemp(prefix="rendercv_")
-
-    try:
-        # Prepare the YAML file name we want to render, and copy only
-        # needed assets into temp_dir. Skip other CV YAML files to avoid
-        # ambiguity when rendercv runs.
-        src_name = Path(filename).name
-        dest_yaml = Path(temp_dir) / src_name
-
-        for item in CV_DIR.iterdir():
-            dest = Path(temp_dir) / item.name
-            if item.is_dir():
-                shutil.copytree(item, dest)
-                continue
-
-            # If this is a YAML CV file but it's not the selected one, skip it
-            if item.suffix in (".yaml", ".yml") and item.name != src_name:
-                continue
-
-            shutil.copy(item, dest)
-
-        # Run rendercv in the temp dir against the copied file name.
-        cmd = [
-            "rendercv",
-            "render",
-            src_name,
-            "-nomd",
-            "-nohtml",
-            "-nopng",
-            "--quiet",
-        ]
-
-        # Ensure the subprocess uses UTF-8 for IO on Windows to avoid
-        # UnicodeEncodeError when libraries (rich) write special chars.
-        env = os.environ.copy()
-        env["PYTHONIOENCODING"] = "utf-8"
-        env["PYTHONUTF8"] = "1"
-
-        proc = subprocess.run(
-            cmd,
-            cwd=temp_dir,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-            env=env,
-        )
-
-        # Regardless of return code, check for produced PDFs (they may be
-        # created even if the process returns a non-zero code). Prefer any
-        # found PDF to serve to the user.
-        pdfs = glob.glob(os.path.join(temp_dir, "*.pdf"))
-        if not pdfs:
-            # fallback: search recursively
-            pdfs = glob.glob(os.path.join(temp_dir, "**", "*.pdf"), recursive=True)
-
-        if pdfs:
-            pdf_path = pdfs[0]
-
-            @after_this_request
-            def cleanup(response):
-                try:
-                    shutil.rmtree(temp_dir)
-                except Exception:
-                    pass
-                return response
-
-            download_name = f"{Path(filename).stem}_{lang}.pdf"
-            return send_file(pdf_path, as_attachment=True, download_name=download_name)
-
-        # No PDF produced — log and return 500.
-        print("rendercv failed (no PDF produced):\n", proc.stdout, proc.stderr)
-
-        @after_this_request
-        def cleanup_err(response):
-            try:
-                shutil.rmtree(temp_dir)
-            except Exception:
-                pass
-            return response
-
-        abort(500, description="CV PDF not produced")
-    except FileNotFoundError:
-        # rendercv executable not found
-        shutil.rmtree(temp_dir)
-        abort(500, description="rendercv not installed on server")
-    except Exception as e:
-        try:
-            shutil.rmtree(temp_dir)
-        except Exception:
-            pass
-        print("Unexpected error generating CV:", e)
-        abort(500)
+    download_name = f"{file_path.stem}.pdf"
+    return send_file(file_path, as_attachment=True, download_name=download_name)
 
 
 if __name__ == "__main__":

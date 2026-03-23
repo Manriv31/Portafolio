@@ -335,6 +335,72 @@ img {
     height: 18px;
 }
 
+/* --- Tech badges (minimal, compact) --- */
+.experience-stack {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.tech-badge {
+    --badge-bg-dark: #2b2b2b;
+    --badge-bg-light: #f1f1f1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.18rem 0.5rem;
+    border-radius: 8px;
+    background: var(--badge-bg-dark);
+    border: 0;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    height: 28px;
+    line-height: 1;
+}
+
+.tech-badge img {
+    width: auto;
+    height: 20px;
+    display: block;
+}
+
+.tech-label {
+    display: inline-block;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+
+/* Light theme tweak: keep badges subtle */
+.light-theme .tech-badge {
+    background: var(--badge-bg-light);
+    color: #111;
+}
+
+/* Fallback initials shown when SVG is missing */
+.tech-initials {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    color: var(--text-primary);
+    font-size: 0.72rem;
+    font-weight: 600;
+    margin-right: 0.35rem;
+}
+
+.tech-badge .tech-logo[style*="display:none"] + .tech-initials {
+    display: inline-flex;
+}
+
+/* If initials are shown, keep the main label small */
+.tech-badge .tech-initials + .tech-label {
+    font-size: 0.78rem;
+}
+
 @media (max-width: 768px) {
     /* On smaller screens stack header vertically and center icons */
     .hero-header {
@@ -1002,6 +1068,70 @@ img {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+}
+
+/* Tech badge structure: pill holds the shields background, label sits outside */
+.tech-badge {
+    --badge-bg-dark: #2b2b2b;
+    --badge-bg-light: #f1f1f1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0; /* visual padding handled by .tech-pill */
+    border-radius: 8px;
+    background: transparent;
+    border: 0;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    height: 28px;
+}
+
+.tech-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.18rem 0.45rem;
+    border-radius: 8px;
+    background: var(--badge-bg-dark);
+}
+
+.light-theme .tech-pill {
+    background: var(--badge-bg-light);
+}
+
+.tech-pill .tech-logo {
+    width: auto;
+    height: 20px;
+    display: block;
+}
+
+.tech-initials {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    color: var(--text-primary);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.tech-label {
+    display: inline-block;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+
+.tech-badge.img-missing .tech-initials { display: inline-flex; }
+.tech-badge.img-loaded .tech-label { display: none; }
+.tech-badge.img-missing .tech-label { display: inline-block; }
+
+/* When an external shields.io image loads, force the pill to match the badge color
+   so the visible area looks like a single, uniform badge even in light theme. */
+.tech-badge.img-loaded .tech-pill {
+    background: var(--badge-bg-dark) !important;
 }
 
 /* --- Freelance / Specialties --- */

@@ -1,4 +1,4 @@
-# 🌐 Portfolio Personal
+# 🌐 Portfolio Personal - Manuel Rivera
 
 Sitio web de portafolio personal construido con **Python (Flask)**, inspirado en el diseño minimalista y moderno de [hirok.io](https://hirok.io/).
 

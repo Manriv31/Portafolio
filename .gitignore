@@ -69,8 +69,6 @@ secrets.yml
 Thumbs.db
 desktop.ini
 
-# Generated CVs (temporary output)
-static/cv/*.pdf
 
 # Temporary / local build artifacts
 tmp/
